@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>esyPay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="convertion.css">
+</head>
+
+<body>
+
+    <div id="section-1" class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="payment-card">
+            <div class="card-header-custom text-center">
+                <h2>esyPay</h2>
+                <p>Convert and Pay Instantly</p>
+            </div>
+
+            <div class="card-body-custom">
+                <div class="mb-4">
+                    <label for="inrAmount" class="form-label">Amount in INR</label>
+                    <div class="input-group">
+                        <span class="input-group-text">₹</span>
+                        <input type="number" id="inrAmount" class="form-control" placeholder="Enter INR Amount">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="convertedAmount" class="form-label">SELECT CURRENCY / CONVERTION RATE </label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <select id="selectDropdown" class="input-group-text">
+                                <option value="">select currency</option>
+                                <option value="JPY">¥ - JP</option>
+                                <option value="USD">$ - US</option>
+                                <option value="EUR">€ - EU</option>
+                                <option value="GBP">£ - UK</option>
+                                <option value="CNY">¥ - CN</option>
+                                <option value="AUD">A$ - AU</option>
+                                <option value="CAD">C$ - CA</option>
+                                <option value="CHF">CHF - CH</option>
+                                <option value="NZD">NZ$ - NZ</option>
+                                <option value="SGD">S$ - SG</option>
+                                <option value="HKD">HK$ - HK</option>
+                                <option value="KRW">₩ - KR</option>
+                                <option value="BRL">R$ - BR</option>
+                                <option value="ZAR">R - ZA</option>
+                                <option value="MXN">$ - MX</option>
+                                <option value="RUB">₽ - RU</option>
+                                <option value="SEK">kr - SE</option>
+                                <option value="NOK">kr - NO</option>
+                                <option value="DKK">kr - DK</option>
+                                <option value="PLN">zł - PL</option>
+                                <option value="TRY">₺ - TR</option>
+                                <option value="THB">฿ - TH</option>
+                                <option value="IDR">Rp - ID</option>
+                                <option value="MYR">RM - MY</option>
+                                <option value="PHP">₱ - PH</option>
+                                <option value="VND">₫ - VN</option>
+                                <option value="EGP">£ - EG</option>
+                                <option value="SAR">﷼ - SA</option>
+                                <option value="AED">د.إ - AE</option>
+                                <option value="ARS">$ - AR</option>
+                                <option value="CLP">$ - CL</option>
+                                <option value="COP">$ - CO</option>
+                                <option value="PEN">S/. - PE</option>
+                                <option value="UYU">$U - UY</option>
+                                <option value="CZK">Kč - CZ</option>
+                                <option value="HUF">Ft - HU</option>
+                                <option value="ILS">₪ - IL</option>
+                                <option value="PKR">₨ - PK</option>
+                                <option value="BDT">৳ - BD</option>
+                                <option value="LKR">Rs - LK</option>
+                                <option value="NGN">₦ - NG</option>
+                                <option value="KES">Sh - KE</option>
+                                <option value="TZS">Sh - TZ</option>
+                                <option value="UGX">Sh - UG</option>
+                                <option value="GHS">₵ - GH</option>
+                                <option value="XOF">Fr - BJ</option>
+                                <option value="XAF">Fr - CM</option>
+                                <option value="XCD">$ - LC</option>
+                            </select></span>
+                        <input type="text" id="convertedAmount" class="form-control" placeholder="converted amount" readonly>
+                    </div>
+                </div>
+
+                <button id="convertButton" class="paymentButton B-2">
+                    Exchange Currency
+                </button>
+
+                <br />
+
+                <div class="mb-4">
+                    <label for="billAmount" class="form-label">Amount to pay</label>
+                    <div class="input-group">
+                        <span id="denomination" class="input-group-text"></span>
+                        <input type="text" id="billAmount" class="form-control" placeholder="Amount to pay" readonly>
+                    </div>
+                </div>
+
+                <button id="payBtn" onclick="transverse()" class="paymentButton B-1">
+                    Proceed with Payment
+                </button>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="convertion.js"></script>
+</body>
+
+</html>
+  

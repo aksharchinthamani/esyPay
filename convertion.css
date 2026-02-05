@@ -1,0 +1,120 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.card-header-custom h2 {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.card-header-custom p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.form-label {
+  font-weight: 500;
+  color: #444;
+}
+
+/* Input groups */
+.input-group-text {
+  background: #f0f0f0;
+  border-radius: 8px 0 0 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 6px rgba(79, 172, 254, 0.5);
+  outline: none;
+}
+
+/* Dropdown styling */
+#selectDropdown {
+  border: none;
+  background: #f0f0f0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Buttons */
+.paymentButton {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  color: #fff;
+}
+
+.B-2 {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.B-2:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #38f9d7, #43e97b);
+}
+
+.B-1 {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.B-1:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .payment-card {
+    padding: 1.5rem;
+  }
+  .card-header-custom h2 {
+    font-size: 1.5rem;
+  }
+}
