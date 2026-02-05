@@ -39,6 +39,8 @@ exchangeButton.onclick = () => {
 function transverse(){
     if(convertBar.value != 0 && resultOutput.value > 0){
         payButton.disabled = false;
+        localStorage.setItem("amountToPay", resultOutput.value);
+        localStorage.setItem("currency", denimination.innerText);
           window.location.href = "payment.html";
     }
     else{
@@ -60,6 +62,9 @@ function transverse(){
         let number = document.getElementById('number').value.trim();
         let cvv = document.getElementById('cvv').value.trim();
         let cardsDetails = JSON.parse(localStorage.getItem("cardDetails"));
+        let amountpayed = localStorage.getItem("amountToPay");
+        let currencyType = localStorage.getItem("currency");    
+
         
         if (!cardsDetails) {
             alert("Card details are not saved or invalid.");
@@ -70,10 +75,11 @@ function transverse(){
             event.preventDefault()
             setTimeout(() => {
                  
-             let transactionId = Math.floor(Math.random() * 100000000000);
+             let transactionId = Math.floor(Math.random() * 1000000000000);
         document.getElementById("loadingOverlay").style.display = "none";
         alert(` Payment Successful! Thank you for your transaction.\n
-            Your transaction ID:  ${transactionId}.
+            Your transaction ID:  ${transactionId}.\n
+            Amount Paid:  ${amountpayed} ${currencyType}
             `); 
     }, 2000);
 
