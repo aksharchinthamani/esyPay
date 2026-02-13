@@ -4,7 +4,7 @@ let resultOutput = document.getElementById("billAmount");
 let exchangeButton = document.getElementById("convertButton");
 let payButton = document.getElementById("payBtn");
 let dropD = document.getElementById("selectDropdown");
-let denimination = document.getElementById("denomination");
+let denomination = document.getElementById("denomination");
 
 
 
@@ -30,7 +30,7 @@ exchangeButton.onclick = () => {
             const resultValue = firstVal * exchangeRate;
             convertBar.value = resultValue.toFixed(2);
             resultOutput.value = resultValue.toFixed(2);
-            denimination.innerText = selecter;
+            denomination.innerText = selecter;
         })
 
 
@@ -40,7 +40,7 @@ function transverse(){
     if(convertBar.value != 0 && resultOutput.value > 0){
         payButton.disabled = false;
         localStorage.setItem("amountToPay", resultOutput.value);
-        localStorage.setItem("currency", denimination.innerText);
+        localStorage.setItem("currency", denomination.innerText);
           window.location.href = "payment.html";
     }
     else{
@@ -49,50 +49,57 @@ function transverse(){
 }
 
  
- function pay() { 
+function pay(event) {
+    let cardName = document.getElementById("cardName").value.trim();
+    let number = document.getElementById("number").value.trim();
+    let cvv = document.getElementById("cvv").value.trim();
 
-    //   event.preventDefault();
-    // document.getElementById("loadingOverlay").style.display = "flex";
+    
+    let cardsDetails = JSON.parse(localStorage.getItem("cardDetails"));
+    let amountpayed = localStorage.getItem("amountToPay");
+    let currencyType = localStorage.getItem("currency");
 
-    // setTimeout(() => {
-    //     document.getElementById("loadingOverlay").style.display = "none";
-       
+    if (!cardsDetails) {
+        alert("Card details are not saved or invalid.");
+        return;
+    }
 
-        let cardName = document.getElementById('cardName').value.trim();
-        let number = document.getElementById('number').value.trim();
-        let cvv = document.getElementById('cvv').value.trim();
-        let cardsDetails = JSON.parse(localStorage.getItem("cardDetails"));
-        let amountpayed = localStorage.getItem("amountToPay");
-        let currencyType = localStorage.getItem("currency");    
+    if (cardName === cardsDetails.name && number === cardsDetails.cardNumber && cvv === cardsDetails.CVV) {
+        document.getElementById("loadingOverlay").style.display = "flex";
+        
+        setTimeout(() => {
+            let transactionId = Math.floor(Math.random() * 1000000000000);
+            let dateString = new Date().toLocaleString();
+
+// saving history
+            const newTransaction = {
+                id: transactionId,
+                date: dateString,
+                amount: amountpayed,
+                currency: currencyType
+            };
 
         
-        if (!cardsDetails) {
-            alert("Card details are not saved or invalid.");
-            return;
-        }
-        else if (cardName === cardsDetails.name && number === cardsDetails.cardNumber && cvv === cardsDetails.CVV) {
-            document.getElementById("loadingOverlay").style.display = "flex";
-            event.preventDefault()
-            setTimeout(() => {
-                 
-             let transactionId = Math.floor(Math.random() * 1000000000000);
-        document.getElementById("loadingOverlay").style.display = "none";
-        alert(` Payment Successful! Thank you for your transaction.\n
-            Your transaction ID:  ${transactionId}.\n
-            Amount Paid:  ${amountpayed} ${currencyType}
-            `); 
-    }, 2000);
+            let history = JSON.parse(localStorage.getItem("paymentHistory")) || [];
+            history.unshift(newTransaction); 
+            localStorage.setItem("paymentHistory", JSON.stringify(history));
+        
 
-            // alert(" Payment Successful! Thank you for your transaction.");
-        }
-        else {
-            alert(" Invalid card details. Please try again.");
-        }
-    
-
+            document.getElementById("loadingOverlay").style.display = "none";
+            alert(`Payment Successful!\n ID: ${transactionId}\n 
+                Date: ${dateString}`);
+            
+            // window.location.href = "history.html"; 
+        }, 2000);
+    } else {
+        alert("Invalid card details. Please try again.");
+    }
 }
 
 function back() {
     window.location.href = "convertion.html"; 
 };
+function history() {
+    window.location.href = "history.html"; 
+}
 

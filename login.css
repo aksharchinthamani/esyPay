@@ -1,4 +1,3 @@
-/* General reset and font */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Body background */
 body {
   background: linear-gradient(135deg, #4facfe, #00f2fe);
   min-height: 100vh;
@@ -15,7 +13,6 @@ body {
   align-items: center;
 }
 
-/* Login card */
 .login-card {
   background: #fff;
   padding: 2rem;
@@ -26,7 +23,6 @@ body {
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Header */
 .card-header-custom h2 {
   font-weight: 600;
   color: #333;
@@ -39,7 +35,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Inputs */
 .form-control {
   border-radius: 8px;
   padding: 0.8rem;
@@ -53,7 +48,6 @@ body {
   outline: none;
 }
 
-/* Buttons */
 .signinButton,
 .loginButton {
   width: 100%;
@@ -87,20 +81,17 @@ body {
   background: linear-gradient(135deg, #00f2fe, #4facfe);
 }
 
-/* Error text */
 .error-text {
   color: #e74c3c;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-/* Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive tweaks */
 @media (max-width: 480px) {
   .login-card {
     padding: 1.5rem;
@@ -114,7 +105,7 @@ body {
  font-size: 0.9rem;
   font-weight: bold;
   opacity: 1;
-  transition: opacity 0.8s ease; /* smooth fade */
+  transition: opacity 0.8s ease;
 }
 
 .error-text.fade-out {
